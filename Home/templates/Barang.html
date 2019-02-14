@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Blog.css' %}" type="text/css">
+    <script src="assets/js/bootstrap.min.js"></script>
+</head>
+<body>
+        <header>
+                    <div class="row" style="background:lightblue;">
+                    <div class="col-2" style="background:teal">
+                        <div style="margin-left: 1cm;padding:1cm">Toko Online</div>
+                    </div> 
+                    <div class="col-2">
+                            <div style="margin-left: 1cm;padding:1cm;padding-left: 0.5cm;">
+                                    <a href="{% url 'Barang'%}">Home</a></div></div> 
+                    </div>
+                </div>
+                
+            </header>
+    
+                
+                <div class="container" style="display:block;margin:auto; padding-left: 100px; padding-right: 100px; margin-top:30px;margin-bottom:80px;">
+                <div class="row">
+                    {% for barang in Barangs %}
+                <div class="col-4" style="border:solid;">
+                        <div class="container" style="max-width:100%;max-height:100%;">
+                        <img src="../media/{{barang.gambar}}" style="padding-left:-20px;">
+                    </div>
+                    <br><br><br>
+                        <div style>{{barang.judul}}</div>
+                        <div>Rp. {{barang.teks}},-</div>
+                        <a href="{% url 'BarangDetail' barang_id=barang.id %}">Detail...</a>
+                            
+                </div>
+                {%endfor%}
+            </div>
+                <div class="container" style="display:block;margin:auto; padding-left: 100px; padding-right: 100px; margin-top:30px;margin-bottom:80px;">
+           
+                <a style="margin:auto;"href="{% url 'BarangInput' %}">Tambah Postingan</a>
+            </div></div>
+    </div>
+
+   
+            
+</body>
+</html>
